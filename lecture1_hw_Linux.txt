@@ -1,0 +1,75 @@
+HW1
+1. Create `linux_lecture` directory and notes.txt file:
+
+mkdir python_cursor/hw1/linux_lecture && touch python_cursor/hw1/notes.txt |tee -a python_cursor/hw1/log_file.txt
+
+2. Copy notes.txt file to linux_lecture directory:
+
+cp python_cursor/hw1/notes.txt python_cursor/hw1/linux_lecture/ |tee -a python_cursor/hw1/log_file.txt
+
+
+3. List the files in the current directory, in “long listing format”:
+
+ls -l python_cursor/hw1/linux_lecture |tee -a python_cursor/hw1/log_file.txt
+
+
+4. List all files, including hidden files, in the your home (~) directory, in reverse alphabetical order and long listing format:
+
+ls -a -r -l ~ |tee -a python_cursor/hw1/log_file.txt
+
+
+5. Rename the file notes.txt to new_notes.txt:
+
+mv python_cursor/hw1/notes.txt python_cursor/hw1/new_notes.txt |tee -a python_cursor/hw1/log_file.txt
+
+6. Remove the files linux_lecture/notes.txt and new_notes.txt and Create homework.sh file under linux_lecture directory:
+
+rm python_cursor/hw1/new_notes.txt python_cursor/hw1/linux_lecture/notes.txt && touch python_cursor/hw1/linux_lecture/homework.sh 
+
+7. Set the file homework.sh to have a last-modified date of January 1, 2020, 4:15am and Create hw.sh, hw1.sh, hw2.sh, hw1.txt under the linux_lecture directory:
+
+touch -a -m -t 202001010415.00  python_cursor/hw1/linux_lecture/homework.sh  && touch python_cursor/hw1/linux_lecture/hw.sh python_cursor/hw1/linux_lecture/hw1.sh python_cursor/hw1/linux_lecture/hw2.sh python_cursor/hw1/linux_lecture/hw1.txt
+
+8.Find all the files only with the extension .txt in the current directory:
+
+ls python_cursor/hw1/linux_lecture| grep .txt |tee -a python_cursor/hw1/log_file.txt
+
+9. Copy all the text files (files whose names end with .txt) from the current folder to the new directory `lecture_new`:
+
+mkdir -p python_cursor/hw1/new_lecture && cp python_cursor/hw1/linux_lecture/*.txt $_
+
+10. Write `echo 'linux_lecture'` to the homework.sh file by using echo:
+
+echo "linux_lecture" > python_cursor/hw1/linux_lecture/homework.sh
+
+11. Display the contents of homework.sh:
+
+cat python_cursor/hw1/linux_lecture/homework.sh |tee -a python_cursor/hw1/log_file.txt
+
+12. Change the permissions to just write for current user and try to Display contents again:
+
+chmod u-rx python_cursor/hw1/linux_lecture/homework.sh && cat python_cursor/hw1/linux_lecture/homework.sh |tee -a python_cursor/hw1/log_file.txt
+
+13. Change the permission to rwx for current user only and try again.:
+
+chmod u+rwx python_cursor/hw1/linux_lecture/homework.sh && cat python_cursor/hw1/linux_lecture/homework.sh |tee -a python_cursor/hw1/log_file.txt
+
+13a.Execute the homework.sh:
+
+ python_cursor/hw1/linux_lecture/homework.sh 
+
+14. Write from 1 to 10 in each line in homework.sh by using text reader.:
+
+seq 1 10 > python_cursor/hw1/linux_lecture/homework.sh
+
+15. Display only the first 7 lines of the file homework.sh from the current directory on the terminal.:
+
+head -7 python_cursor/hw1/linux_lecture/homework.sh |tee -a python_cursor/hw1/log_file.txt
+
+16. Create notes.sh with `ls` and make it executable:
+
+touch python_cursor/hw1/linux_lecture/notes.sh && echo "ls" > python_cursor/hw1/linux_lecture/notes.sh && chmod u+rwx python_cursor/hw1/linux_lecture/notes.sh
+
+17.Execute notes.sh:
+
+python_cursor/hw1/linux_lecture/notes.sh
