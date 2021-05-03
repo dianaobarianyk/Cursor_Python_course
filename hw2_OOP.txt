@@ -229,77 +229,7 @@ print(New_Profile.__str__())
 
 4.* Create an interface for the Laptop with the next methods: Screen, Keyboard, Touchpad, WebCam, Ports, Dynamics and create an HPLaptop class by using your interface.
 
-from abc import ABC, abstractmethod
-
-
-class Laptop(ABC):
-    @abstractmethod
-    def screen(self):
-        raise NotImplementedError
-
-    @abstractmethod
-
-
-        raise NotImplementedError
-
-    @abstractmethod
-    def touchpad(self):
-        raise NotImplementedError
-
-    @abstractmethod
-    def webcam(self):
-        raise NotImplementedError
-
-    @abstractmethod
-    def ports(self):
-        raise NotImplementedError
-
-    @abstractmethod
-    def dynamics(self):
-        raise NotImplementedError
-
-
-class HPLaptop(Laptop):
-    def __init__(self, model, year, ssd, screen_size, keybord_type, touchpad_type, webcam_type, port, dynamic_type):
-        self.model = model
-        self.year = year
-        self.ssd = ssd
-        self.screen_size = screen_size
-        self.keybord_type = keybord_type
-        self.touchpad_type = touchpad_type
-        self.webcam_type = webcam_type
-        self.port = port
-        self.dynamic_type = dynamic_type
-
-    def screen(self):
-        print(f'HPLaptop screen size of model {self.model} is {self.screen_size}.')
-
-    def keybord(self):
-        print(f'HPLaptop keybord type is {self.keybord_type}.')
-
-    def touchpad(self):
-        print(f'HPLaptop touchpad type is {self.touchpad_type}.')
-
-    def webcam(self):
-        print(f'HPLaptop webcam is {self.webcam_type}.')
-
-    def ports(self):
-        print(f'HPLaptop port is {self.port}.')
-
-    def dynamics(self):
-        print(f'HPLaptop dynamics is {self.dynamic_type}.')
-
-
-my_hplaptop = HPLaptop('HP Pavilion 15-eg0001ua Natural Silver', '2020', '256 GB', 15.6, 'HP Keybord', 'HP TouchPad 4G',
-                       'Logitech HD Webcam C920', '2 х 3.2 Gen 1 USB', 'GD6000')
-
-my_hplaptop.screen()
-my_hplaptop.keybord()
-my_hplaptop.touchpad()
-my_hplaptop.webcam()
-my_hplaptop.ports()
-my_hplaptop.dynamics()
-
+om abc import ABC, abstractmethod   class Laptop(ABC):     @abstractmethod     def screen(self):         raise NotImplementedError      @abstractmethod     def keybord(self):         raise NotImplementedError      @abstractmethod     def touchpad(self):         raise NotImplementedError      @abstractmethod     def webcam(self):         raise NotImplementedError      @abstractmethod     def ports(self):         raise NotImplementedError      @abstractmethod     def dynamics(self):         raise NotImplementedError   class HPLaptop(Laptop):     def __init__(self, model, year, ssd, screen_size, keybord_type, touchpad_type, webcam_type, port, dynamic_type):         self.model = model         self.year = year         self.ssd = ssd         self.screen_size = screen_size         self.keybord_type = keybord_type         self.touchpad_type = touchpad_type         self.webcam_type = webcam_type         self.port = port         self.dynamic_type = dynamic_type      def screen(self):         print(f'HPLaptop screen size of model {self.model} is {self.screen_size}.')      def keybord(self):         print(f'HPLaptop keybord type is {self.keybord_type}.')      def touchpad(self):         print(f'HPLaptop touchpad type is {self.touchpad_type}.')      def webcam(self):         print(f'HPLaptop webcam is {self.webcam_type}.')      def ports(self):         print(f'HPLaptop port is {self.port}.')      def dynamics(self):         print(f'HPLaptop dynamics is {self.dynamic_type}.')   my_hplaptop = HPLaptop('HP Pavilion 15-eg0001ua Natural Silver', '2020', '256 GB', 15.6, 'HP Keybord', 'HP TouchPad 4G',                        'Logitech HD Webcam C920', '2 х 3.2 Gen 1 USB', 'GD6000')  my_hplaptop.screen() my_hplaptop.keybord() my_hplaptop.touchpad() my_hplaptop.webcam() my_hplaptop.ports() my_hplaptop.dynamics()
 
 
 
