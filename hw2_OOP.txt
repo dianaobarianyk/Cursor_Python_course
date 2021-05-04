@@ -214,7 +214,8 @@ class Profile:
         self.birthday = birthday
         self.age = age
         self.sex = sex
-        self.representation = [self.name, self.last_name, self.phone, self.address, self.email, self.birthday, self.age, self.sex]
+        self.representation = [self.name, self.last_name, self.phone, self.address, self.email, self.birthday, self.age,
+                               self.sex]
 
     def __str__(self):
         return self.representation
@@ -222,6 +223,7 @@ class Profile:
 
 New_Profile = Profile('David', 'Cursor', '+380000001111', 'Lviv', 'dcursor@gmail.com', '21.10.1991', 30, 'male')
 print(New_Profile.__str__())
+
 
 
 
