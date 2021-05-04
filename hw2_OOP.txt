@@ -176,20 +176,17 @@ for arm in young_person.arms:
           """
 
 class CellPhone:
-    def __init__(self, model):
-        self.screen = Screen(6.06)
-        self.model = model
+    def __init__(self, screen):
+        self.screen = screen
 
 
 class Screen:
-    def __init__(self, size):
-        self.size = size
+    def __init__(self):
+        pass
 
 
-screen = Screen(6.06)
-iphone = CellPhone('iPhone')
-print('2b-----------------------------')
-print(f'The model of cellphone is {iphone.model} and the size of screen is {iphone.screen.size} inches')
+screen = Screen()
+iphone = CellPhone(screen)
 
 
 
