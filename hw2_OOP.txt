@@ -215,7 +215,7 @@ class Profile:
                                self.sex]
 
     def __str__(self):
-        return f'{self.representation}'
+        return f'{self.representation}' 
 
 
 New_Profile = Profile('David', 'Cursor', '+380000001111', 'Lviv', 'dcursor@gmail.com', '21.10.1991', 30, 'male')
