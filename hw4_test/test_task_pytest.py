@@ -9,8 +9,11 @@ def test_py_add():
 def test_py_subtract():
     assert Calculator.subtract(13, 7) == 6
 
+
 def test_py_multiply():
     assert Calculator.multiply(8, 9) == 72
 
+
 def test_py_divide():
-    assert Calculator.divide(13, 7) == 6
+    with pytest.raises(ValueError, match=r".*Can not divide by zero!.*"):
+        Calculator.divide(10, 0)
