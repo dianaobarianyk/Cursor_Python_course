@@ -1,3 +1,4 @@
+
 from abc import ABC, abstractmethod
 import random
 
@@ -43,6 +44,7 @@ class Person(Human):
             self.availability_of_money -= house.cost
             self.own_house.append(house)
             print('I bought a house and now I have my new own home.')
+            realtor._houses.remove(house)
 
 
 class House:
@@ -100,7 +102,7 @@ class Realtor(metaclass=RealtorType):
 
     def steal_money(self, person):
         percentage_chance = 10
-        if random.randint(1, 15) < percentage_chance:
+        if random.randint(1, 10) == percentage_chance:
             stolen_money = random.randint(100, 1000)
             if person.availability_of_money > stolen_money:
                 person.availability_of_money -= stolen_money
@@ -126,3 +128,4 @@ person_instance.buy_house(house_instance_2, realtor_instance_1)
 realtor_instance_1.give_discount(house_instance_1)
 person_instance.buy_house(house_instance_1, realtor_instance_1)
 realtor_instance_1.steal_money(person_instance)
+realtor_instance_1.provide_info_about_houses()
