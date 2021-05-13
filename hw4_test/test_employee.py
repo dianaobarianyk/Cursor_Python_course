@@ -23,3 +23,7 @@ class TestForEmployee(unittest.TestCase):
         mock_get.return_value.ok = True
         response = self.classTest.monthly_schedule('January')
         self.assertIsNotNone(response)
+
+
+if __name__ == '__main__':
+    unittest.main()

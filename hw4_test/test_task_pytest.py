@@ -15,5 +15,6 @@ def test_py_multiply():
 
 
 def test_py_divide():
+    assert Calculator.divide(14, 7) == 2
     with pytest.raises(ValueError, match=r".*Can not divide by zero!.*"):
         Calculator.divide(10, 0)
