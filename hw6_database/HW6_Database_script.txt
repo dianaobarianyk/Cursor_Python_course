@@ -1,0 +1,35 @@
+—-1. Create additional table phones with fields: id, phone_name, company_id, user_id:
+
+CREATE TABLE phones 
+(id int NOT NULL AUTO_INCREMENT PRIMARY KEY,
+phone_name varchar(255),
+company_id int,
+user_id int);
+
+—Create additional table phone_companies with fields: id, name:
+
+CREATE TABLE phone_companies 
+(id int NOT NULL AUTO_INCREMENT PRIMARY KEY,
+name varchar(255));
+
+—-Write select and save it to file to get users is developers:
+
+/usr/local/mysql/bin/mysql -u root -p my_items -e "select * from users where is_developer=1" > Desktop/users_dev.txt
+
+—-Insert xiaomi, apple, samsung to companies.
+
+INSERT INTO phone_companies(name)  VALUES ('xiaomi'), ('apple'), ('samsung');
+
+—- Insert 3 phone (with any data) to phones.
+
+INSERT INTO phones (phone_name, company_id, user_id)   VALUES ('xiaomi redmi note 9', 1, 3), ('IPhone 12', 2, 1), ('samsung s10', 3, 4);
+
+—-Write select and save it to file to get phones where company_id=XIAOMI COMPANY ID.
+
+/usr/local/mysql/bin/mysql -u root -p my_items -e "SELECT * FROM phones p JOIN phone_companies c ON p.company_id =c.id WHERE c.name='xiaomi'" > Desktop/phones_xioami.txt
+
+—-Create file dump of database 
+/usr/local/mysql/bin/mysqldump -u root -p my_items > Desktop/my_items.sql
+
+—-Select all users which have phones.
+SELECT u.* FROM users u join phones p ON u.id=p.user_id;
