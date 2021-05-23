@@ -1,0 +1,89 @@
+1. Insert dump of shop.sql to your local database
+
+/usr/local/mysql/bin/mysql -u root -p shop< hw7/shop.sql 
+
+SHOW databases;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| my_items           |
+| mysql              |
+| performance_schema |
+| shop               |
+| sys                |
++--------------------+
+6 rows in set (0,00 sec)
+
+2. Modify table products add user_id as foreign key
+
+USE shop;
+SHOW tables;
++---------------------+
+| Tables_in_shop      |
++---------------------+
+| categories          |
+| categories_products |
+| product_images      |
+| products            |
+| users               |
++---------------------+
+5 rows in set (0,00 sec)
+
+ALTER TABLE products ADD COLUMN user_id int NOT NULL;
+
+Query OK, 0 rows affected (0,13 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+SHOW COLUMNS FROM products;
++-------------+--------------+------+-----+---------+----------------+
+| Field       | Type         | Null | Key | Default | Extra          |
++-------------+--------------+------+-----+---------+----------------+
+| id          | int(11)      | NO   | PRI | NULL    | auto_increment |
+| title       | varchar(255) | NO   |     | NULL    |                |
+| meta_title  | char(255)    | YES  |     | NULL    |                |
+| description | varchar(400) | YES  |     | NULL    |                |
+| price       | double       | NO   |     | NULL    |                |
+| old_price   | double       | YES  |     | NULL    |                |
+| is_active   | tinyint(1)   | YES  |     | NULL    |                |
+| user_id     | int(11)      | NO   |     | NULL    |                |
++-------------+--------------+------+-----+---------+----------------+
+8 rows in set (0,00 sec)
+
+
+UPDATE products set user_id=1;
+
+Query OK, 1 row affected (0,00 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+ALTER TABLE products ADD FOREIGN KEY (user_id) REFERENCES users(id);
+
+Query OK, 1 row affected (0,03 sec)
+Records: 1  Duplicates: 0  Warnings: 0
+
+
+3. Select users their products, collections and images and write this query to file.
+
+SELECT u.first_name, u.last_name, p.title as product_title, p.price, c.title as category_title, pi.file
+FROM users u JOIN products p on p.user_id=u.id 
+JOIN categories_products cp on cp.product_id=p.id
+JOIN categories c on c.id =cp.category_id
+JOIN product_images pi on pi.product_id=p.id;
+
++------------+-----------+---------------+----------+----------------+------------------------------------------------------------------------------------+
+| first_name | last_name | product_title | price    | category_title | file                                                                               |
++------------+-----------+---------------+----------+----------------+------------------------------------------------------------------------------------+
+| Liubomyr   | Luzhnyi   | Rolex         | 14000.25 | Watch          | https://res.cloudinary.com/hz3gmuqw6/image/upload/v1621495544/cooking_yx2glg.jpg   |
+| Liubomyr   | Luzhnyi   | Rolex         | 14000.25 | Watch          | 11https://res.cloudinary.com/hz3gmuqw6/image/upload/v1621495544/cooking_yx2glg.jpg |
+| Liubomyr   | Luzhnyi   | Rolex         | 14000.25 | Watch          | 2https://res.cloudinary.com/hz3gmuqw6/image/upload/v1621495544/cooking_yx2glg.jpg  |
++------------+-----------+---------------+----------+----------------+------------------------------------------------------------------------------------+
+3 rows in set (0,00 sec)
+
+/usr/local/mysql/bin/mysql -u root -p shop -e "SELECT u.first_name, u.last_name, p.title as product_title, p.price, c.title as category_title, pi.file
+FROM users u JOIN products p on p.user_id=u.id 
+JOIN categories_products cp on cp.product_id=p.id
+JOIN categories c on c.id =cp.category_id
+JOIN product_images pi on pi.product_id=p.id" > users_products.txt
+
+—-Create file dump of database 
+/usr/local/mysql/bin/mysqldump -u root -p shop > shop.sql

@@ -1,0 +1,4 @@
+first_name	last_name	product_title	price	category_title	file
+Liubomyr	Luzhnyi	Rolex	14000.25	Watch	https://res.cloudinary.com/hz3gmuqw6/image/upload/v1621495544/cooking_yx2glg.jpg
+Liubomyr	Luzhnyi	Rolex	14000.25	Watch	11https://res.cloudinary.com/hz3gmuqw6/image/upload/v1621495544/cooking_yx2glg.jpg
+Liubomyr	Luzhnyi	Rolex	14000.25	Watch	2https://res.cloudinary.com/hz3gmuqw6/image/upload/v1621495544/cooking_yx2glg.jpg
