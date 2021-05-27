@@ -1,0 +1,266 @@
+Task 1
+
+MacBook-Air-user-2:hw8_docker user$  docker images
+REPOSITORY    TAG       IMAGE ID       CREATED        SIZE
+ubuntu        20.04     7e0aa2d69a15   4 weeks ago    72.7MB
+ubuntu        latest    7e0aa2d69a15   4 weeks ago    72.7MB
+hello-world   latest    d1165f221234   2 months ago   13.3kB
+jenkins       2.60.3    cd14cecfdb3a   2 years ago    696MB
+
+MacBook-Air-user-2:hw8_docker user$ docker build -t hw_flask .
+
+MacBook-Air-user-2:hw8_docker user$ docker images
+REPOSITORY    TAG       IMAGE ID       CREATED         SIZE
+hw_flask      latest    ecb3faa15f6b   3 minutes ago   422MB
+ubuntu        20.04     7e0aa2d69a15   4 weeks ago     72.7MB
+ubuntu        latest    7e0aa2d69a15   4 weeks ago     72.7MB
+hello-world   latest    d1165f221234   2 months ago    13.3kB
+jenkins       2.60.3    cd14cecfdb3a   2 years ago     696MB
+
+MacBook-Air-user-2:hw8_docker user$ docker run -d hw_flask
+3845afd68caf7ccbf7e701e0354a550f3f0657cc0e1b20d706d2ba5acd776a79
+
+MacBook-Air-user-2:hw8_docker user$ docker ps
+CONTAINER ID   IMAGE      COMMAND                  CREATED          STATUS          PORTS     NAMES
+3845afd68caf   hw_flask   "/bin/sh -c 'FLASK_A…"   35 seconds ago   Up 34 seconds             vibrant_perlman
+
+MacBook-Air-user-2:hw8_docker user$ docket attach 3
+
+MacBook-Air-user-2:~ user$ docker stop 3
+3
+
+MacBook-Air-user-2:hw8_docker user$ docker ps -a
+CONTAINER ID   IMAGE            COMMAND                  CREATED             STATUS                        PORTS     NAMES
+3845afd68caf   hw_flask         "/bin/sh -c 'FLASK_A…"   51 minutes ago      Exited (137) 43 seconds ago             vibrant_perlman
+b0e1d25ff720   ubuntu:20.04     "sleep 60"               58 minutes ago      Exited (0) 57 minutes ago               relaxed_dubinsky
+88cd385aff88   ubuntu:20.04     "sleep 30"               About an hour ago   Exited (0) 59 minutes ago               xenodochial_lamport
+f08290bb3b60   jenkins:2.60.3   "/bin/tini -- /usr/l…"   2 hours ago         Exited (129) 2 hours ago                gracious_wozniak
+465d226cbcaa   ubuntu           "/bin/bash"              2 hours ago         Exited (0) 2 hours ago                  youthful_keldysh
+
+MacBook-Air-user-2:hw8_docker user$ docker inspect 3
+[
+    {
+        "Id": "3845afd68caf7ccbf7e701e0354a550f3f0657cc0e1b20d706d2ba5acd776a79",
+        "Created": "2021-05-27T11:41:06.1307998Z",
+        "Path": "/bin/sh",
+        "Args": [
+            "-c",
+            "FLASK_APP=/opt/app.py flask run --host=0.0.0.0 --port=8080"
+        ],
+        "State": {
+            "Status": "exited",
+            "Running": false,
+            "Paused": false,
+            "Restarting": false,
+            "OOMKilled": false,
+            "Dead": false,
+            "Pid": 0,
+            "ExitCode": 137,
+            "Error": "",
+            "StartedAt": "2021-05-27T11:41:06.7840328Z",
+            "FinishedAt": "2021-05-27T12:31:31.9605353Z"
+        },
+        "Image": "sha256:ecb3faa15f6b5d2971006ad93d0ad0a24a0970cfb87ef2b6e497e225b7391e1a",
+        "ResolvConfPath": "/var/lib/docker/containers/3845afd68caf7ccbf7e701e0354a550f3f0657cc0e1b20d706d2ba5acd776a79/resolv.conf",
+        "HostnamePath": "/var/lib/docker/containers/3845afd68caf7ccbf7e701e0354a550f3f0657cc0e1b20d706d2ba5acd776a79/hostname",
+        "HostsPath": "/var/lib/docker/containers/3845afd68caf7ccbf7e701e0354a550f3f0657cc0e1b20d706d2ba5acd776a79/hosts",
+        "LogPath": "/var/lib/docker/containers/3845afd68caf7ccbf7e701e0354a550f3f0657cc0e1b20d706d2ba5acd776a79/3845afd68caf7ccbf7e701e0354a550f3f0657cc0e1b20d706d2ba5acd776a79-json.log",
+        "Name": "/vibrant_perlman",
+        "RestartCount": 0,
+        "Driver": "overlay2",
+        "Platform": "linux",
+        "MountLabel": "",
+        "ProcessLabel": "",
+        "AppArmorProfile": "",
+        "ExecIDs": null,
+        "HostConfig": {
+            "Binds": null,
+            "ContainerIDFile": "",
+            "LogConfig": {
+                "Type": "json-file",
+                "Config": {}
+            },
+            "NetworkMode": "default",
+            "PortBindings": {},
+            "RestartPolicy": {
+                "Name": "no",
+                "MaximumRetryCount": 0
+            },
+            "AutoRemove": false,
+            "VolumeDriver": "",
+            "VolumesFrom": null,
+            "CapAdd": null,
+            "CapDrop": null,
+            "CgroupnsMode": "host",
+            "Dns": [],
+            "DnsOptions": [],
+            "DnsSearch": [],
+            "ExtraHosts": null,
+            "GroupAdd": null,
+            "IpcMode": "private",
+            "Cgroup": "",
+            "Links": null,
+            "OomScoreAdj": 0,
+            "PidMode": "",
+            "Privileged": false,
+            "PublishAllPorts": false,
+            "ReadonlyRootfs": false,
+            "SecurityOpt": null,
+            "UTSMode": "",
+            "UsernsMode": "",
+            "ShmSize": 67108864,
+            "Runtime": "runc",
+            "ConsoleSize": [
+                0,
+                0
+            ],
+            "Isolation": "",
+            "CpuShares": 0,
+            "Memory": 0,
+            "NanoCpus": 0,
+            "CgroupParent": "",
+            "BlkioWeight": 0,
+            "BlkioWeightDevice": [],
+            "BlkioDeviceReadBps": null,
+            "BlkioDeviceWriteBps": null,
+            "BlkioDeviceReadIOps": null,
+            "BlkioDeviceWriteIOps": null,
+            "CpuPeriod": 0,
+            "CpuQuota": 0,
+            "CpuRealtimePeriod": 0,
+            "CpuRealtimeRuntime": 0,
+            "CpusetCpus": "",
+            "CpusetMems": "",
+            "Devices": [],
+            "DeviceCgroupRules": null,
+            "DeviceRequests": null,
+            "KernelMemory": 0,
+            "KernelMemoryTCP": 0,
+            "MemoryReservation": 0,
+            "MemorySwap": 0,
+            "MemorySwappiness": null,
+            "OomKillDisable": false,
+            "PidsLimit": null,
+            "Ulimits": null,
+            "CpuCount": 0,
+            "CpuPercent": 0,
+            "IOMaximumIOps": 0,
+            "IOMaximumBandwidth": 0,
+            "MaskedPaths": [
+                "/proc/asound",
+                "/proc/acpi",
+                "/proc/kcore",
+                "/proc/keys",
+                "/proc/latency_stats",
+                "/proc/timer_list",
+                "/proc/timer_stats",
+                "/proc/sched_debug",
+                "/proc/scsi",
+                "/sys/firmware"
+            ],
+            "ReadonlyPaths": [
+                "/proc/bus",
+                "/proc/fs",
+                "/proc/irq",
+                "/proc/sys",
+                "/proc/sysrq-trigger"
+            ]
+        },
+        "GraphDriver": {
+            "Data": {
+                "LowerDir": "/var/lib/docker/overlay2/b7b3b24aa676790a0da3dc857d20c50c6c6fcfac603cf1bf4f5c31422598a3a4-init/diff:/var/lib/docker/overlay2/d27vjizu06d7u12oj21yqgwsn/diff:/var/lib/docker/overlay2/gl7x4nq4sanve8pmp4socade8/diff:/var/lib/docker/overlay2/qrivvkjzcqv0yo0vjgqebmpwb/diff:/var/lib/docker/overlay2/8ce330a3affb007d93db98621269c4d82eca8f72459ad8d69b1dfb56c7cfeb08/diff:/var/lib/docker/overlay2/64674dfc7f21a9f03131d3f038e666bce0e6994ee194253c740465f561171ed4/diff:/var/lib/docker/overlay2/289c5245f01df3b03a1c22a2424266e58433b6b22e3962b19fd1b04f1ad97f97/diff",
+                "MergedDir": "/var/lib/docker/overlay2/b7b3b24aa676790a0da3dc857d20c50c6c6fcfac603cf1bf4f5c31422598a3a4/merged",
+                "UpperDir": "/var/lib/docker/overlay2/b7b3b24aa676790a0da3dc857d20c50c6c6fcfac603cf1bf4f5c31422598a3a4/diff",
+                "WorkDir": "/var/lib/docker/overlay2/b7b3b24aa676790a0da3dc857d20c50c6c6fcfac603cf1bf4f5c31422598a3a4/work"
+            },
+            "Name": "overlay2"
+        },
+        "Mounts": [],
+        "Config": {
+            "Hostname": "3845afd68caf",
+            "Domainname": "",
+            "User": "",
+            "AttachStdin": false,
+            "AttachStdout": false,
+            "AttachStderr": false,
+            "Tty": false,
+            "OpenStdin": false,
+            "StdinOnce": false,
+            "Env": [
+                "PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+            ],
+            "Cmd": null,
+            "Image": "hw_flask",
+            "Volumes": null,
+            "WorkingDir": "",
+            "Entrypoint": [
+                "/bin/sh",
+                "-c",
+                "FLASK_APP=/opt/app.py flask run --host=0.0.0.0 --port=8080"
+            ],
+            "OnBuild": null,
+            "Labels": {}
+        },
+        "NetworkSettings": {
+            "Bridge": "",
+            "SandboxID": "f802a8d0c8bf66ec6a404ce99abbe335f94fecdda2e7a80b38ebb4dce04d97fb",
+            "HairpinMode": false,
+            "LinkLocalIPv6Address": "",
+            "LinkLocalIPv6PrefixLen": 0,
+            "Ports": {},
+            "SandboxKey": "/var/run/docker/netns/f802a8d0c8bf",
+            "SecondaryIPAddresses": null,
+            "SecondaryIPv6Addresses": null,
+            "EndpointID": "",
+            "Gateway": "",
+            "GlobalIPv6Address": "",
+            "GlobalIPv6PrefixLen": 0,
+            "IPAddress": "",
+            "IPPrefixLen": 0,
+            "IPv6Gateway": "",
+            "MacAddress": "",
+            "Networks": {
+                "bridge": {
+                    "IPAMConfig": null,
+                    "Links": null,
+                    "Aliases": null,
+                    "NetworkID": "a665d31b892b75e2e3e7136578201fae4f70d326907d4b223adb23d42fc91e14",
+                    "EndpointID": "",
+                    "Gateway": "",
+                    "IPAddress": "",
+                    "IPPrefixLen": 0,
+                    "IPv6Gateway": "",
+                    "GlobalIPv6Address": "",
+                    "GlobalIPv6PrefixLen": 0,
+                    "MacAddress": "",
+                    "DriverOpts": null
+                }
+            }
+        }
+    }
+]
+
+MacBook-Air-user-2:hw8_docker user$ docker logs 3
+ * Serving Flask app '/opt/app.py' (lazy loading)
+ * Environment: production
+   WARNING: This is a development server. Do not use it in a production deployment.
+   Use a production WSGI server instead.
+ * Debug mode: off
+ * Running on all addresses.
+   WARNING: This is a development server. Do not use it in a production deployment.
+ * Running on http://172.17.0.2:8080/ (Press CTRL+C to quit)
+
+MacBook-Air-user-2:hw8_docker user$ docker build -t hw_flask .
+
+MacBook-Air-user-2:hw8_docker user$ docker run -d hw_flask
+6068e7f2887a4b888b76fd6b927cb6ec8ae8cda0690a51fddee4a59e530be8c9
+
+
+MacBook-Air-user-2:hw8_docker user$ docker ps
+CONTAINER ID   IMAGE      COMMAND                  CREATED          STATUS          PORTS     NAMES
+6068e7f2887a   hw_flask   "/bin/sh -c 'FLASK_A…"   26 seconds ago   Up 25 seconds             determined_gagarin
+
+MacBook-Air-user-2:hw8_docker user$ docker stop 6
+6
+
+Task 2

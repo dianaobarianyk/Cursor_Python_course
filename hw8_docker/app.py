@@ -8,9 +8,10 @@ def main():
     return "Welcome!"
 
 
-@app.route('/hello')
-def hello():
-    return 'Hi there!'
+@app.route('/user_name')
+def user_name():
+    return 'Hi Diana!'
+
 
 
 if __name__ == "__main__":
