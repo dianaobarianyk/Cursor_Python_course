@@ -264,3 +264,17 @@ MacBook-Air-user-2:hw8_docker user$ docker stop 6
 6
 
 Task 2
+
+MacBook-Air-user-2:hw8_docker user$ docker run -it --name my_story ubuntu
+root@e0fca471e790:/# echo "My story" >story.txt
+root@e0fca471e790:/# apt-get update && apt-get install cowsay 
+root@e0fca471e790:/# cat story.txt       
+My story
+
+MacBook-Air-user-2:~ user$ docker run -it --name my_story_2 ubuntu
+root@e30e5fa50d1d:/# ls
+bin   dev  home  lib32  libx32  mnt  proc  run   srv  tmp  var
+boot  etc  lib   lib64  media   opt  root  sbin  sys  usr
+
+root@e30e5fa50d1d:/# cat story.txt
+cat: story.txt: No such file or directory
